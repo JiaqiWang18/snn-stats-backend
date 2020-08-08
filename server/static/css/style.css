@@ -1,0 +1,213 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media only screen and (max-width: 600px) 
+{
+	th{
+		display: inline;
+	}
+	.title{
+		font-size: medium;
+	}
+	.chartth{
+		display: inline-block !important;
+	}
+	.chartstyle{
+		width:80% !important;
+	}
+	.occityth{
+		text-align: right;
+	}
+}
+
+html *
+{
+   font-family: Arial !important;
+}
+
+
+.appcontainer{
+	margin: auto;
+	width: 100%;
+}
+
+.title{
+	text-align: center;
+	color:white;
+	font-style: normal;
+	font-weight: normal;
+}
+
+.centerct{
+	width: 90%;
+	margin: auto;
+}
+
+.sub{
+	color: white !important;
+}
+
+table{
+	border-collapse:collapse;
+}
+
+
+/*banner*/
+.banner{
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	background-color: #0068B6;
+	padding-top:5px;
+	padding-bottom:5px;
+	-webkit-box-shadow:inset 0px 0px 0px 6px #f00;
+    -moz-box-shadow:inset 0px 0px 0px 6px #f00;
+    box-shadow:inset 0px 0px 0px 6px #f00;
+
+}
+
+.font{
+	color: white;
+}
+/*us block*/
+
+.USstats{
+	width: 100%;
+	background-color: #0068B6;
+	margin: auto;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.USstatstb{
+	width: 100%;
+	overflow-y:auto;
+}
+
+.statscell{
+	background-color:#DA2E2E;
+	width: 60%;
+	margin:auto;
+	color:white;
+	padding: 8px;
+}
+
+.numcell{
+	background-color:#FF5C00;
+	width: 60%;
+	margin:auto;
+	padding: 8px;
+}
+
+.numtb{
+	width: 100%;
+	text-align: center;
+}
+
+.charts{
+	width: 90%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.chartstyle{
+	margin: auto;
+}
+
+/*CA block*/
+
+.CAstats{
+	width: 100%;
+	background-color: #DA2E2E;
+	margin: auto;
+	padding-top: 8px;
+}
+
+.CAstatstb{
+	width: 100%;
+	overflow-y:auto;
+}
+
+.CAstatscell{
+	background-color:#0068B6;
+	width: 50%;
+	margin:auto;
+	color:white;
+	padding: 8px;
+}
+
+.CAnumcell{
+	background-color:#FF5C00;
+	width: 60%;
+	margin:auto;
+	padding: 8px;
+}
+
+.OCLA{
+	width: 100%;
+}
+
+.LAtb{
+	width: 100%;
+}
+
+.OCtb{
+	width: 100%;
+}
+
+.LAth{
+	width: 50%;
+}
+
+.OCth{
+	width:50%
+}
+
+/*OCcities*/
+.OCcity{
+	width: 100% !important;
+	border: none !important;
+}
+
+.occityth{
+	width: 50%;
+	color:white;
+	padding: 5px;
+}
+
+
+
+.occitytrR {
+	background-color:#FF5C00;
+}
+
+.ocpr{
+	padding: 0px;
+	margin:none;
+	height: min-content;
+	border:0;
+}
+
+.ocprfont{
+	padding-top: 15px;
+	font-size: 13px;
+}
+
+.h5font{
+	color: white !important;
+}
+/*charts*/
+.charts{
+	width:100%;
+}
+
+.inner{
+	width: 100%;
+	background-color: #2a79b6;
+
+}
+
+.chartstyle{
+	width:30vw;
+}

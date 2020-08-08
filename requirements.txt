@@ -1,0 +1,7 @@
+flask
+gunicorn
+mysql-connector-python
+bs4
+requests
+datetime
+flask_cors

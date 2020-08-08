@@ -1,0 +1,12 @@
+.main{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.grey{
+   background-color:  #8b8a8a;
+}
+
+.white{
+    background-color:  white;
+}

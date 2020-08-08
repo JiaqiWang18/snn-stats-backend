@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>main</title>
+</head>
+<!--https://cdn.jsdelivr.net/gh/jackyw1118/hosting@10/style.css--->
+<body>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<div class = "appcontainer">
+		<div class = "banner">
+			<h2 class = "font">Student News Network COVID-19 Dashboard</h2>
+		</div>
+		<br>
+		<div class = "USstats">
+			<h3 class = "title">US COVID-19 Stats</h3>
+
+			<table class = "USstatstb">
+				<tr>
+					<th>
+						<div class = "statscell">
+							<h4 class = "sub" id = "USTTlbl">US Total</h4>
+							<div class = "numcell">
+								<table class = "numtb">
+									<tr>
+										<th id = "USTT">loading</th>
+									</tr>
+									<tr>
+										<th id = "USTTIncre">loading</th>
+									</tr>
+								</table>
+								
+							</div>
+						</div>
+					</th>
+					<th>
+						<div class = "statscell">
+							<h4 class = "sub" id = "USRlbl">US Recovered</h4>
+							<div class = "numcell">
+								<table class = "numtb">
+									<tr>
+										<th id = "USR">loading</th>
+									</tr>
+									<tr>
+										<th id = "USRIncre">loading</th>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</th>
+					<th>
+						<div class = "statscell">
+							<h4  class = "sub" id = "USDlbl">US Death</h4>
+							<div class = "numcell">
+								<table class = "numtb">
+									<tr>
+										<th id = "USD">loading</th>
+									</tr>
+									<tr>
+										<th id = "USDIncre">loading</th>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</th>
+				</tr>			
+				
+				
+			</table>
+			
+		</div>
+		<br>
+
+		<div class = "CAstats">
+			<h3 class = "title">CA COVID-19 Stats</h3>
+
+			<table class = "CAstatstb">
+				<tr>
+					<th>
+						<div class = "CAstatscell">
+							<h4  class = "sub" id = "CATTlbl">CA Total</h4>
+							<div class = "CAnumcell">
+								<table class = "numtb">
+									<tr>
+										<th id = "CATT">loading</th>
+									</tr>
+									<tr>
+										<th id = "CATTIncre">loading</th>
+									</tr>
+								</table>
+								
+							</div>
+						</div>
+					</th>
+					<th>
+						<div class = "CAstatscell">
+							<h4  class = "sub" id = "CADlbl">CA Death</h4>
+							<div class = "CAnumcell">
+								<table class = "numtb">
+									<tr>
+										<th id = "CAD">loading</th>
+									</tr>
+									<tr>
+										<th id = "CADIncre">loading</th>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</th>
+				</tr>			
+			</table>
+				
+			<table class = "OCLA">
+				<tr>
+					<th class = "LAth">
+						<div class = "centerct">
+						<table class = "LAtb">
+							
+							<tr>
+								<th>
+									<div class = "statscell">
+										<h4 class = "sub" id = "LATTlbl">LA Total</h4>
+										<div class = "numcell">
+											<table class = "numtb">
+												<tr>
+													<th id = "LATT">loading</th>
+												</tr>
+												<tr>
+													<th id = "LATTIncre">loading</th>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</th>
+							</tr>
+							<tr>
+								<th>
+									<div class = "statscell">
+										<h4 class = "sub" id = "LADlbl">LA Death</h4>
+										<div class = "numcell">
+											<table class = "numtb">
+												<tr>
+													<th id = "LAD">loading</th>
+												</tr>
+												<tr>
+													<th id = "LADIncre">loading</th>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</th>
+							</tr>
+							
+						</table>
+						</div>
+					</th>
+					<th class = "OCth">
+						<div class = "centerct">
+						<table class = "OCtb">						
+							<tr>
+								<th>
+									<div class = "statscell">
+										<h4 class = "sub" id = "OCTTlbl">OC Total</h4>
+										<div class = "numcell">
+											<table class = "numtb">
+												<tr>
+													<th id = OCTT>loading</th>
+												</tr>
+												<tr>
+													<th id = OCTTIncre>loading</th>
+												</tr>
+												<tr class = "ocpr">
+													<th id = "hideLabel" class = "ocpr ocprfont">
+														Today Test Positive Rate
+													</th>
+												</tr>
+												<tr class = "ocpr">
+													<th class = "ocpr"><h5 class = "ocpr h5font" id = "ocpositiverate">loading</h5></th>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</th>
+							</tr>
+							<tr>
+								<th>
+									<div class = "statscell">
+										<h4 class = "sub" id = "OCDlbl">OC Death</h4>
+										<div class = "numcell">
+											<table class = "numtb">
+												<tr>
+													<th id = "OCD">loading</th>
+												</tr>
+												<tr>
+													<th id = "OCDIncre">loading</th>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</th>
+							</tr>
+							<tr>
+								<th>
+									<div class = "statscell">
+										<h4 class = "sub" id = "OCRlbl">OC Total Tested</h4>
+										<div class = "numcell">
+											<table class = "numtb">
+												<tr>
+													<th id = "OCR">loading</th>
+												</tr>
+												<tr>
+													<th id = "OCRIncre">loading</th>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</th>
+							</tr>
+							
+						</table>
+						</div>
+					</th>
+				</tr>
+			</table>
+			<h3 class = "title">OC Cities</h3>
+			<table class = "OCcity" id = "OCCity"></table>
+		</div>
+		<br>
+		<br>
+		<div class = "charts">
+			<div class = "inner">
+				<h3 class = "title">Charts</h3>
+				<table class = "charts">
+					<tr>
+						<th class = "chartth"> 
+							<canvas class = "chartstyle" id = "USC1">Chart1</canvas>
+						</th>
+						<th class = "chartth">
+							<canvas class = "chartstyle" id = "USC2">Chart2</canvas>
+						</th>
+
+					</tr>
+					<tr>
+						<th class = "chartth">
+							<canvas class = "chartstyle" id = "CA1">Chart1</canvas>
+						</th>
+						<th class = "chartth"> 
+							<canvas class = "chartstyle" id = "CA2">Chart2</canvas>
+						</th>
+					</tr>
+					<tr>
+						<th class = "chartth"><canvas class = "chartstyle" id = "LAC1">LA Chart 1</canvas></th>
+					
+						<th class = "chartth"><canvas class = "chartstyle" id = "LAC2">LA Chart 2</canvas></th>
+					</tr>
+					<tr>
+						<th class = "chartth"><canvas class = "chartstyle" id = "OCC1">OC Chart 1</canvas></th>
+					
+						<th class = "chartth"><canvas class = "chartstyle" id = "OCC2">OC Chart 2</canvas></th>
+					</tr>
+				</table>	
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>
