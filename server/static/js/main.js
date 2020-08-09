@@ -59,7 +59,11 @@ function main(){
             if(raw[i][1] == 0){
                 thNum.appendChild(document.createTextNode(raw[i][0]))
             }else{
-                thNum.appendChild(document.createTextNode(raw[i][0] + "  +" + raw[i][1]))
+                if(raw[i][1] < 0){
+                  thNum.appendChild(document.createTextNode(raw[i][0] + "  " + raw[i][1]))
+                  console.log("yep")
+                }
+                else{thNum.appendChild(document.createTextNode(raw[i][0] + "  +" + raw[i][1]))}
             }
             tr.appendChild(thTitle)
             tr.appendChild(thNum)
