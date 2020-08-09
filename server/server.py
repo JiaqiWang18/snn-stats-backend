@@ -8,6 +8,7 @@ import mysql
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
+app.config['TEMPLATES_AUTO_RELOAD']=True
 CORS(app)
 
 def crawlUS(link):

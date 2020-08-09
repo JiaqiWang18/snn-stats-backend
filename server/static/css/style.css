@@ -13,7 +13,7 @@
 		display: inline-block !important;
 	}
 	.chartstyle{
-		width:80% !important;
+		width:90% !important;
 	}
 	.occityth{
 		text-align: right;
@@ -209,5 +209,5 @@ table{
 }
 
 .chartstyle{
-	width:30vw;
+	width:45vw;
 }

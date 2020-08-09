@@ -4,6 +4,7 @@ function mainPageHeader(){
     if (this.readyState == 4 && this.status == 200) {
         data = JSON.parse(this.responseText)
         var counter = 0
+
         var i = 1
         for (title in data){
             if(counter == 0 || counter == 3 || counter == 5 || counter == 7){
