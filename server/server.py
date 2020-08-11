@@ -118,7 +118,11 @@ def updateLog():
     cursor.execute("SELECT * FROM currentStats")
     current = cursor.fetchall()
     dt = date.today() - timedelta(days=1)
-    monthdate = float(str(dt.month)+"."+str(dt.day))
+    if dt.day < 10:
+        monthdate = float(dt.month + dt.day/100)
+
+    else:
+        monthdate = float(str(dt.month) + "." + str(dt.day))
     cursor.execute(f"SELECT Date FROM logs WHERE Date = {monthdate}")
     checker = cursor.fetchall()
     print(checker)
