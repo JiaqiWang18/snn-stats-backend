@@ -184,17 +184,23 @@ def getData():
     output=dict()
     for i in range(len(current)):
         output[current[i][1]] = [current[i][2], current[i][2]-yesterday[i][2]]
-    print(output)
     #output["OC Today Percentage of Positive Cases （橙县今日检测阳性概率）"] = [round(output['OC Total （橙县总共）'][1]/output['OC Total Tested （橙县已检测）'][1],3) ,0]
 
-    cursor.execute("SELECT * FROM occities")
+    cursor.execute("SELECT * FROM occities ORDER BY stats DESC")
     occurrent = cursor.fetchall()
+    print(occurrent)
     cursor.execute("SELECT * FROM yesteroc")
     ocyesterday = cursor.fetchall()
+    print(ocyesterday)
+    dicocyesterday = {}
+    for city in ocyesterday:
+        dicocyesterday[city[0]]=city[1]
+    print(dicocyesterday)
     for i in range(len(occurrent)):
 
-        output[occurrent[i][0]] = [occurrent[i][1], occurrent[i][1]-ocyesterday[i][1]]
+        output[occurrent[i][0]] = [occurrent[i][1], occurrent[i][1]-dicocyesterday[occurrent[i][0]]]
     con.close()
+    print(output)
     return jsonify(output)
 
 @app.route('/updateYesterday')
@@ -231,4 +237,5 @@ def getGraphData():
 if __name__ == '__main__':
     #crawlOCCity("https://ochca.maps.arcgis.com/apps/opsdashboard/index.html#/cc4859c8c522496b9f21c451de2fedae")
     #updateYesterOC()
-    print(crawlLa("http://www.publichealth.lacounty.gov/media/Coronavirus/locations.htm"))
+    #print(crawlLa("http://www.publichealth.lacounty.gov/media/Coronavirus/locations.htm"))
+    getData()

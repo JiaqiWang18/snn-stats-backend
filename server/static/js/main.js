@@ -1,5 +1,5 @@
 function main(){
-    $.get("https://snnstatsapi.herokuapp.com/getData", function(data, status){
+    $.get("/getData", function(data, status){
         console.log(data)
         let raw = []
         let labels = []
@@ -122,7 +122,7 @@ function makeChart(){
             renderChart("CA Daily Increase \u52a0\u5dde\u65b0\u589e", CAIncre,dataAxis, "CA2", "rgb(235,52,52)")
         }
     };
-    server.open("GET", "https://snnstatsapi.herokuapp.com/graphData", true);
+    server.open("GET", "/graphData", true);
     server.send();
 
     
