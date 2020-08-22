@@ -9,21 +9,40 @@
     }
 </style>
 </head>
-<!--https://cdn.jsdelivr.net/gh/jackyw1118/hosting@10/style.css--->
 <body>
 
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 	<div class = "appcontainer">
 		<div class = "banner">
-			<h2 class = "font">Student News Network COVID-19 Dashboard</h2>
+			<table class = "bannerTb"> 
+				<tr class = "bannerTr">
+					<th><button class = "spacerbutton">About</button></th>
+					<th class = "titleTh"><h2 class = "font">Student News Network COVID-19 Dashboard</h2></th>
+					<th><button  type="button" id="myBtn" class = "spacerbutton realbutton">About</button></th>
+				</tr>
+			</table>
 		</div>
+		<div id="myModal" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+			  <span class="close">&times;</span>
+			  <p>The casecounts displayed on this page automatically updates every 15 minutes. 
+			  All the casecounts are stored in our database hosted on AWS. This API is hosted on heroku.
+			  Standalone version of the stats dashboard: 
+			  <a href = "https://snnstatsapi.herokuapp.com/">link</a>. 
+			  Daily casecounts are represented with a "+" plus sign.</p>
+			  <br>
+			  <p>-Jacky Wang</p>
+			</div>
+		  
+		  </div>
 		<br>
 		<div class = "USstats">
 			<h3 class = "title">US COVID-19 Stats</h3>
 
 			<table class = "USstatstb">
 				<tr>
-					<th>
+					<th class = "USTH">
 						<div class = "statscell">
 							<h4 class = "sub" id = "USTTlbl">US Total</h4>
 							<div class = "numcell">
@@ -39,7 +58,7 @@
 							</div>
 						</div>
 					</th>
-					<th>
+					<th class = "USTH">
 						<div class = "statscell">
 							<h4 class = "sub" id = "USRlbl">US Death</h4>
 							<div class = "numcell">
@@ -54,7 +73,7 @@
 							</div>
 						</div>
 					</th>
-					<th>
+					<th class = "USTH">
 						<div class = "statscell">
 							<h4  class = "sub" id = "USDlbl">US Recovered</h4>
 							<div class = "numcell">
