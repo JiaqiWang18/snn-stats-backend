@@ -46,7 +46,11 @@ function main(){
         $("#OCR").text(raw[9][0])
         console.log( rawNum)
         const rate = rawNum[7][1]/rawNum[9][1]
-        $("#ocpositiverate").text(`${Math.round((rate + Number.EPSILON) * 100) / 100* 100}%`)
+        let percentage= Math.round((rate + Number.EPSILON) * 100) / 100* 100
+        if(percentage.toString().length>3){
+          percentage = percentage.toString().slice(0,3)
+        }
+        $("#ocpositiverate").text(`${percentage}%`)
         if(rawNum[9][1]==0){
           $("#ocpositiverate").hide()
           $("#hideLabel").hide()

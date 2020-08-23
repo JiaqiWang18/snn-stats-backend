@@ -5,8 +5,10 @@
 
 .grey{
    background-color:  #8b8a8a;
+   cursor: pointer;
 }
 
 .white{
     background-color:  white;
+    cursor: pointer;
 }
