@@ -20,6 +20,8 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 app.config['TEMPLATES_AUTO_RELOAD']=True
 CORS(app)
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 
 def crawlUS(link):
     agent = {"User-Agent": "Mozilla/5.0"}
@@ -150,9 +152,9 @@ def crawlOCCities():
     options.headless = True
 
     options.add_argument("--window-size=1920,1200")
+    options.binary_location = GOOGLE_CHROME_PATH
 
-
-    driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options)
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, options=options)
     driver.get('https://ochca.maps.arcgis.com/apps/opsdashboard/index.html#/2a169f85c2254dd7b43f95b095208356')
     try:
         element = WebDriverWait(driver, 10).until(
