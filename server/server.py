@@ -20,7 +20,7 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 app.config['TEMPLATES_AUTO_RELOAD']=True
 CORS(app)
-GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 
 def crawlUS(link):
