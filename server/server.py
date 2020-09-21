@@ -148,13 +148,13 @@ def updateLog():
     con.close()
 
 def crawlOCCities():
-    options = Options()
-    options.headless = True
-
-    options.add_argument("--window-size=1920,1200")
+    options = webdriver.ChromeOptions()
     options.binary_location = GOOGLE_CHROME_PATH
+    options.add_argument("--headless")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--no-sandbox")
 
-    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, options=options)
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
     driver.get('https://ochca.maps.arcgis.com/apps/opsdashboard/index.html#/2a169f85c2254dd7b43f95b095208356')
     try:
         element = WebDriverWait(driver, 10).until(
