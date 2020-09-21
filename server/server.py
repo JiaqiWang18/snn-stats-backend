@@ -1,6 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.utils import ChromeType
+
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -147,7 +151,8 @@ def crawlOCCities():
 
     options.add_argument("--window-size=1920,1200")
 
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+
+    driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options)
     driver.get('https://ochca.maps.arcgis.com/apps/opsdashboard/index.html#/2a169f85c2254dd7b43f95b095208356')
     try:
         element = WebDriverWait(driver, 10).until(
