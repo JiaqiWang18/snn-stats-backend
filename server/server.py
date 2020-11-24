@@ -15,11 +15,17 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 app.config['TEMPLATES_AUTO_RELOAD']=True
 CORS(app)
+
+#config vars
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 DATABASE_URL = os.environ.get("SNN_RDS_URL")
 DATABASE_PASS = os.environ.get("SNN_RDS_PASS")
-
+US_SOURCE = os.environ.get("COVID_US_SOURCE")
+CA_SOURCE = os.environ.get("COVID_CA_SOURCE")
+LA_SOURCE = os.environ.get("COVID_LA_SOURCE")
+OC_SOURCE = os.environ.get("COVID_OC_SOURCE")
+OCCITIES_SOURCE = os.environ.get("OCCITIES_SOURCE")
 
 def crawlUS(link):
     agent = {"User-Agent": "Mozilla/5.0"}
@@ -153,7 +159,7 @@ def crawlOCCities():
     options.add_argument("--no-sandbox")
 
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
-    driver.get('https://ochca.maps.arcgis.com/apps/opsdashboard/index.html#/2a169f85c2254dd7b43f95b095208356')
+    driver.get(OCCITIES_SOURCE)
     try:
         element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, "ember273"))
@@ -205,10 +211,10 @@ def crawlData():
                                   database='snn')
     cursor = con.cursor()
     data = [
-        crawlUS("https://www.worldometers.info/coronavirus/country/us/"),
-        crawlCa("https://www.latimes.com/projects/california-coronavirus-cases-tracking-outbreak/"),
-        crawlLa("http://www.publichealth.lacounty.gov/media/Coronavirus/locations.htm"),
-        crawlOC("https://occovid19.ochealthinfo.com/coronavirus-in-oc")
+        crawlUS(US_SOURCE),
+        crawlCa(CA_SOURCE),
+        crawlLa(LA_SOURCE),
+        crawlOC(OC_SOURCE)
     ]
 
     counter = 1
