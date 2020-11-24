@@ -299,7 +299,4 @@ def crawlOCCityData():
     return jsonify(crawlOCCities())
 
 if __name__ == '__main__':
-    #crawlOCCity("https://ochca.maps.arcgis.com/apps/opsdashboard/index.html#/cc4859c8c522496b9f21c451de2fedae")
-    #updateYesterOC()
-    #print(crawlLa("http://www.publichealth.lacounty.gov/media/Coronavirus/locations.htm"))
     getData()
