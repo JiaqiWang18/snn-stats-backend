@@ -1,20 +1,15 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.utils import ChromeType
-
-from webdriver_manager.firefox import GeckoDriverManager
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from flask import Flask, request, jsonify,render_template
+from flask import Flask, jsonify,render_template
 from datetime import date, timedelta
 from bs4 import BeautifulSoup
 from flask_cors import CORS
 import requests
 import mysql.connector
 import mysql
+import os
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
@@ -22,6 +17,9 @@ app.config['TEMPLATES_AUTO_RELOAD']=True
 CORS(app)
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+DATABASE_URL = os.environ.get("SNN_RDS_URL")
+DATABASE_PASS = os.environ.get("SNN_RDS_PASS")
+
 
 def crawlUS(link):
     agent = {"User-Agent": "Mozilla/5.0"}
@@ -94,8 +92,8 @@ def crawlOC(link):
     }
 
 def updateYesterday():
-    con = mysql.connector.connect(user='admin', password='Jiaqi200218',
-                                  host='collegedata.cwfud0qzqwsy.us-east-2.rds.amazonaws.com',
+    con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
+                                  host=DATABASE_URL,
                                   database='snn')
     cursor = con.cursor()
     cursor.execute("SELECT * FROM currentStats")
@@ -107,8 +105,8 @@ def updateYesterday():
     con.close()
 
 def updateYesterOC():
-    con = mysql.connector.connect(user='admin', password='Jiaqi200218',
-                                  host='collegedata.cwfud0qzqwsy.us-east-2.rds.amazonaws.com',
+    con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
+                                  host=DATABASE_URL,
                                   database='snn')
     cursor = con.cursor()
     sql = "SELECT * FROM occities"
@@ -123,8 +121,8 @@ def updateYesterOC():
     con.close()
 
 def updateLog():
-    con = mysql.connector.connect(user='admin', password='Jiaqi200218',
-                                  host='collegedata.cwfud0qzqwsy.us-east-2.rds.amazonaws.com',
+    con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
+                                  host=DATABASE_URL,
                                   database='snn')
     cursor = con.cursor()
     cursor.execute("SELECT * FROM currentStats")
@@ -176,8 +174,8 @@ def crawlOCCities():
                 except Exception:
                     continue
         processed = processed[:40]
-        con = mysql.connector.connect(user='admin', password='Jiaqi200218',
-                                      host='collegedata.cwfud0qzqwsy.us-east-2.rds.amazonaws.com',
+        con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
+                                      host=DATABASE_URL,
                                       database='snn')
         cursor = con.cursor()
         sql = "update occities set stats = %s where cityname = %s"
@@ -202,8 +200,8 @@ def snnfront():
 
 @app.route('/crawlData')
 def crawlData():
-    con = mysql.connector.connect(user='admin', password='Jiaqi200218',
-                                  host='collegedata.cwfud0qzqwsy.us-east-2.rds.amazonaws.com',
+    con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
+                                  host=DATABASE_URL,
                                   database='snn')
     cursor = con.cursor()
     data = [
@@ -226,8 +224,8 @@ def crawlData():
 
 @app.route('/getData')
 def getData():
-    con = mysql.connector.connect(user='admin', password='Jiaqi200218',
-                                  host='collegedata.cwfud0qzqwsy.us-east-2.rds.amazonaws.com',
+    con = mysql.connector.connect(user='admin', password = DATABASE_PASS,
+                                  host= DATABASE_URL,
                                   database='snn')
     cursor = con.cursor()
     cursor.execute("SELECT * FROM currentStats")
@@ -269,8 +267,8 @@ def setYesterday():
 
 @app.route("/graphData")
 def getGraphData():
-    con = mysql.connector.connect(user='admin', password='Jiaqi200218',
-                                  host='collegedata.cwfud0qzqwsy.us-east-2.rds.amazonaws.com',
+    con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
+                                  host=DATABASE_URL,
                                   database='snn')
     cursor = con.cursor()
     sql = "SELECT * FROM logs ORDER BY Date ASC"
