@@ -6,6 +6,7 @@ from flask import Flask, jsonify,render_template
 from datetime import date, timedelta
 from bs4 import BeautifulSoup
 from flask_cors import CORS
+from .updateOCcity import test_func
 import requests
 import mysql.connector
 import mysql
@@ -297,6 +298,10 @@ def getGraphData():
 @app.route('/crawlOCCities')
 def crawlOCCityData():
     return jsonify(crawlOCCities())
+
+@app.route('/track')
+def track():
+    return test_func()
 
 if __name__ == '__main__':
     getData()
