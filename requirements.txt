@@ -7,5 +7,3 @@ datetime
 flask_cors
 selenium
 webdriver-manager
-smtplib
-ssl
