@@ -19,7 +19,7 @@ def test_func():
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
     driver.get(LINK)
     try:
-        element = WebDriverWait(driver, random.randrange(8,12)).until(
+        element = WebDriverWait(driver, random.randrange(20,25)).until(
             EC.presence_of_element_located((By.CLASS_NAME, "c-tracking-result--status-copy-message"))
         )
         soup = BeautifulSoup(driver.page_source, 'html.parser')
