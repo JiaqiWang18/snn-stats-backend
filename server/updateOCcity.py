@@ -21,6 +21,7 @@ def test_func():
     options.add_experimental_option('useAutomationExtension', False)
     #driver = webdriver.Chrome(executable_path="D:\DOWNLOADS\chromedriver_win32 (1)\chromedriver.exe", chrome_options=options)
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
+    print(driver.execute_script("return navigator.userAgent"))
     driver.get(LINK)
     try:
         print(driver.page_source)
