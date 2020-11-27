@@ -1,4 +1,4 @@
-import smtplib, ssl, requests
+import smtplib, ssl, random
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -15,28 +15,31 @@ def test_func():
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--no-sandbox")
 
+    #driver = webdriver.Chrome(executable_path="D:\DOWNLOADS\chromedriver_win32 (1)\chromedriver.exe")
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
     driver.get(LINK)
     try:
-        element = WebDriverWait(driver, 10).until(
+        element = WebDriverWait(driver, random.randrange(8,12)).until(
             EC.presence_of_element_located((By.CLASS_NAME, "c-tracking-result--status-copy-message"))
         )
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         result = soup.find_all("h3", {"class": "c-tracking-result--status-copy-message"})
 
-        return result
-
+        target = [each.text for each in result]
+        if("not yet picked up" not in target[0]):
+            send(target[0])
+        return target
     finally:
         driver.quit()
 
-def send():
+def send(message):
     port = 465  # For SSL
     context = ssl.create_default_context()
     EMAIL_ADDRESS = "jacky200218@gmail.com"
     EMAIL_PASS = "nmsxsyktuzdrdqze"
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
         server.login(EMAIL_ADDRESS, EMAIL_PASS)
-        server.sendmail(EMAIL_ADDRESS, EMAIL_ADDRESS, "hello")
+        server.sendmail(EMAIL_ADDRESS, EMAIL_ADDRESS, message)
 
 if __name__ == '__main__':
   print(test_func())

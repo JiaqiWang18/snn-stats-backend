@@ -301,7 +301,7 @@ def crawlOCCityData():
 
 @app.route('/track')
 def track():
-    return test_func()
+    return jsonify(test_func())
 
 if __name__ == '__main__':
     getData()
