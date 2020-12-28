@@ -116,6 +116,7 @@ function makeChart(){
     server.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             data = JSON.parse(this.responseText)
+            console.log(data)
             for (date in data){
                 dataAxis.push(date)
                 list = data[date]
@@ -223,5 +224,7 @@ function renderChart(label, data, xaxis, eleId, color) {
     });
 }
 
-main()
-makeChart()
+$( document ).ready(function() {
+    main()
+    makeChart()
+});

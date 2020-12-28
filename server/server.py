@@ -2,11 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from flask import Flask, jsonify,render_template
+from flask import Flask, jsonify, render_template, request
 from datetime import date, timedelta
 from bs4 import BeautifulSoup
 from flask_cors import CORS
-from .updateOCcity import test_func
 import requests
 import mysql.connector
 import mysql
@@ -274,6 +273,9 @@ def setYesterday():
 
 @app.route("/graphData")
 def getGraphData():
+    MIN = 60
+    if request.args:
+        MIN = int(request.args.get("prior"))
     con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
                                   host=DATABASE_URL,
                                   database='snn')
@@ -283,7 +285,9 @@ def getGraphData():
     data = cursor.fetchall()
     cursor.execute("SELECT * FROM currentStats")
     current = cursor.fetchall()
-    print(data)
+    MIN = len(data)-MIN
+    data = data[MIN:]
+    print(len(data))
     dt = date.today()
     monthdate = float(str(dt.month) + "." + str(dt.day))
     output = {}

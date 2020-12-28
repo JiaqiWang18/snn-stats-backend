@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/server/templates/covidstats.html" line="187" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="72acaddd-8948-4a70-87e9-4db750b30100" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/templates/covidstats.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/covidstats.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/updateOCcity.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/updateOCcity.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,12 +18,24 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/updateOCcity.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="84" selection-start-line="83" selection-end-line="84" />
+            <state relative-caret-position="142">
+              <caret line="275" lean-forward="true" selection-start-line="275" selection-end-line="275" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -26,32 +43,41 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/updateOCcity.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#27#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wsgi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
+            <state relative-caret-position="63">
               <caret line="3" column="48" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/static/js/mainpage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-559" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/static/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="118" column="29" lean-forward="true" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/templates/frontpage.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/templates/covidstats.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="443">
+              <caret line="249" column="52" lean-forward="true" selection-start-line="249" selection-start-column="52" selection-end-line="249" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -64,17 +90,19 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/server.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/server/updateOCcity.py" />
+        <option value="$PROJECT_DIR$/server/templates/covidstats.html" />
+        <option value="$PROJECT_DIR$/server/static/js/main.js" />
+        <option value="$PROJECT_DIR$/server/server.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2278" />
-    <option name="y" value="-24" />
-    <option name="width" value="1241" />
-    <option name="height" value="671" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -92,6 +120,25 @@
               <item name="snnstatsgetter" type="b2602c69:ProjectViewProjectNode" />
               <item name="snnstatsgetter" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="snnstatsgetter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="snnstatsgetter" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="snnstatsgetter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="snnstatsgetter" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="snnstatsgetter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="snnstatsgetter" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -116,7 +163,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.updateOCcity">
+  <component name="RunManager" selected="Python.wsgi">
     <configuration name="updateOCcity" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="snnstatsgetter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -161,8 +208,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.updateOCcity" />
         <item itemvalue="Python.wsgi" />
+        <item itemvalue="Python.updateOCcity" />
       </list>
     </recent_temporary>
   </component>
@@ -190,13 +237,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1311787" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13624841" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39300135" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29340512" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -204,7 +252,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.49663526" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.11978465" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32974428" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -215,27 +263,10 @@
     <entry file="file://$PROJECT_DIR$/../Anaconda3/Lib/smtplib.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="48" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Anaconda3/Lib/site-packages/selenium/webdriver/common/by.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="84" selection-start-line="83" selection-end-line="84" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -253,13 +284,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Anaconda3/Lib/site-packages/fake_useragent/fake.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1462">
@@ -267,12 +291,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../Anaconda3/Lib/site-packages/pandas/core/frame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5346">
+          <caret line="333" column="8" selection-start-line="333" selection-start-column="8" selection-end-line="333" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/updateOCcity.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+        <state relative-caret-position="231">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/templates/frontpage.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/templates/covidstats.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="249" column="52" lean-forward="true" selection-start-line="249" selection-start-column="52" selection-end-line="249" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="48" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/static/js/mainpage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-559" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/static/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="118" column="29" lean-forward="true" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="275" lean-forward="true" selection-start-line="275" selection-end-line="275" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
