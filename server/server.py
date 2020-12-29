@@ -275,7 +275,7 @@ def setYesterday():
 def getGraphData():
     MIN = 60
     if request.args:
-        MIN = int(request.args.get("prior"))
+        MIN = int(request.args.get("range"))
     con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
                                   host=DATABASE_URL,
                                   database='snn')

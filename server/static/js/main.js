@@ -1,21 +1,3 @@
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
-
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
 function main(){
     $.get("/getData", function(data, status){
         console.log(data)
@@ -101,7 +83,8 @@ function main(){
     });
 }
 
-function makeChart(){
+
+function makeChart(range, initial = false){
     dataAxis = []
     USData = []
     USIncre = []
@@ -117,6 +100,15 @@ function makeChart(){
         if (this.readyState == 4 && this.status == 200) {
             data = JSON.parse(this.responseText)
             console.log(data)
+            if(initial){
+                document.getElementById("sliderDivId").innerHTML = "<table><tr><th><p class = 'title'>Data Range: </p></th><th><input type='range' min='3' max=" + (Object.keys(data).length-1) + " value=" + (Object.keys(data).length-1) + " class='slider' id='graphRange'></th></tr></table>"
+                var slider = document.getElementById("graphRange");
+                slider.onchange  = function() {
+                    let val = this.value;
+                    console.log(val)
+                    makeChart(val);
+            }
+            }
             for (date in data){
                 dataAxis.push(date)
                 list = data[date]
@@ -134,6 +126,38 @@ function makeChart(){
                 LAIncre.push(LAData[i+1]-LAData[i])
                 OCIncre.push(OCData[i+1]-OCData[i])
             }
+            document.getElementById("chartTb").innerHTML = `
+            <tr>
+						<th class = "chartth"> 
+							<canvas class = "chartstyle" id = "USC1">Chart1</canvas>
+						</th>
+						<th class = "chartth">
+							<canvas class = "chartstyle" id = "USC2">Chart2</canvas>
+						</th>
+
+					</tr>
+					<tr>
+						<th class = "chartth">
+							<canvas class = "chartstyle" id = "CA1">Chart1</canvas>
+						</th>
+						<th class = "chartth"> 
+							<canvas class = "chartstyle" id = "CA2">Chart2</canvas>
+						</th>
+					</tr>
+					<tr>
+						<th class = "chartth"><canvas class = "chartstyle" id = "LAC1">LA Chart 1</canvas></th>
+					
+						<th class = "chartth"><canvas class = "chartstyle" id = "LAC2">LA Chart 2</canvas></th>
+					</tr>
+					<tr>
+						<th class = "chartth"><canvas class = "chartstyle" id = "OCC1">OC Chart 1</canvas></th>
+					
+						<th class = "chartth"><canvas class = "chartstyle" id = "OCC2">OC Chart 2</canvas></th>
+					</tr>
+            `;
+            
+            
+    
             renderChart("US Total \u5168\u56fd\u611f\u67d3",USData,dataAxis, "USC1", "rgb(65,192,192)")
             renderChart("LA Total \u6d1b\u6749\u77f6\u53bf\u611f\u67d3",LAData,dataAxis, "LAC1", "rgb(76,235,52)")
             renderChart("CA Total \u52a0\u5dde\u611f\u67d3",CAData,dataAxis, "CA1", "rgb(235,52,52)")
@@ -145,7 +169,7 @@ function makeChart(){
             renderChart("CA Daily Increase \u52a0\u5dde\u65b0\u589e", CAIncre,dataAxis, "CA2", "rgb(235,52,52)")
         }
     };
-    server.open("GET", "/graphData", true);
+    server.open("GET", "/graphData?range="+range, true);
     server.send();
 
     
@@ -225,6 +249,26 @@ function renderChart(label, data, xaxis, eleId, color) {
 }
 
 $( document ).ready(function() {
+  console.log = function() {}
+
+  var modal = document.getElementById("myModal");
+  var btn = document.getElementById("myBtn");
+  var span = document.getElementsByClassName("close")[0];
+
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
     main()
-    makeChart()
+    makeChart(Number.MAX_SAFE_INTEGER, true)
+
 });
