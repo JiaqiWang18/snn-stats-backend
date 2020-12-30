@@ -52,7 +52,8 @@ def crawlCa(link):
     soup = BeautifulSoup(page.content, 'html.parser')
     each = soup.find_all("div", {"class": 'big-number'})
     each = [int(info.text.replace(",","")) for info in each]
-    if (len(each) != 2):
+    print(each)
+    if (len(each) != 3):
         raise Exception("CA crawling exception")
     return {
         "CA Total （加州总共）":each[0],
@@ -303,9 +304,6 @@ def getGraphData():
 def crawlOCCityData():
     return jsonify(crawlOCCities())
 
-@app.route('/track')
-def track():
-    return jsonify(test_func())
 
 if __name__ == '__main__':
-    getData()
+    crawlData()
