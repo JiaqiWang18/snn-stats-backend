@@ -281,14 +281,13 @@ def getGraphData():
                                   host=DATABASE_URL,
                                   database='snn')
     cursor = con.cursor()
-    sql = "SELECT * FROM logs ORDER BY Date ASC"
+    sql = "SELECT * FROM logs ORDER BY ID ASC"
     cursor.execute(sql)
     data = cursor.fetchall()
     cursor.execute("SELECT * FROM currentStats")
     current = cursor.fetchall()
     MIN = len(data)-MIN
     data = data[MIN:]
-    print(len(data))
     dt = date.today()
     monthdate = float(str(dt.month) + "." + str(dt.day))
     output = {}
