@@ -288,8 +288,10 @@ def getGraphData():
     current = cursor.fetchall()
     MIN = len(data)-MIN
     data = data[MIN:]
-    dt = date.today()
-    monthdate = float(str(dt.month) + "." + str(dt.day))
+    yesterDate = str(data[-1][0]).split(".")
+    dt = date(2021, int(yesterDate[0]), int(yesterDate[1])) + timedelta(days=1)
+    addZero = lambda d: d if len(d) == 2 else "0" + d
+    monthdate = float(str(dt.month) + "." + addZero(str(dt.day)))
     output = {}
     for row in data:
         output[float(row[0])]=[row[1],row[4],row[6],row[8]]
