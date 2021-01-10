@@ -1,21 +1,14 @@
-from matplotlib import pyplot as plt
-import pandas as pd
-
-
+from bs4 import BeautifulSoup
+import requests
 
 if __name__ == '__main__':
-    data_dict = {}
-    data_dict['category'] = ['Survey 1', 'Survey 2']
-    data_dict['lower'] = [0.55, 0.67]
-    data_dict['middle'] = [0.67, 0.78]
-    data_dict['upper'] = [0.79, 0.89]
-    dataset = pd.DataFrame(data_dict)
-    for lower, middle, upper, y in zip(dataset['lower'], dataset['middle'], dataset['upper'], range(len(dataset))):
-        plt.plot((lower,middle, upper), (y, y, y), 'ro-', color='orange')
-        plt.annotate(lower,(lower,y),ha='left')
-        plt.annotate(middle,(middle,y),ha='left')
-        plt.annotate(upper,(upper,y),ha='left')
+    agent = {"User-Agent": "Mozilla/5.0"}
+    page = requests.get("https://docs.google.com/spreadsheets/u/3/d/1-dt0LlQaP-yA-koWz3tJzR0urkPvlzbEjmqVwWXA5W8/htmlembed/sheet?gid=0&single=true&widget=false&headers=false&chrome=false", headers=agent)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    output = dict()
+    target_ids = ["0R43", "0R38" ,"0R25", "0R19", "0R28"]
+    for id in target_ids:
+        raw = [ e.text for e in soup.find("th",{"id":id}).find_next_siblings("td")]
+        output[raw[0]] = {"Population": int(raw[2]), "Student":int(raw[4].replace("^","")), "Staff":int(raw[6].replace("^", "")), "Rate":float(raw[-1])}
 
-    plt.yticks(range(len(dataset)), list(dataset['category']))
-    plt.suptitle("Comparison of 95% Confidence Intervals of Both Survey")
-    plt.show()
+    print(output)

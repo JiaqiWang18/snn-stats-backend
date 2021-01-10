@@ -26,6 +26,7 @@ CA_SOURCE = os.environ.get("COVID_CA_SOURCE")
 LA_SOURCE = os.environ.get("COVID_LA_SOURCE")
 OC_SOURCE = os.environ.get("COVID_OC_SOURCE")
 OCCITIES_SOURCE = os.environ.get("OCCITIES_SOURCE")
+SCHOOL_SOURCE = os.environ.get("SCHOOL_SOURCE")
 
 def crawlUS(link):
     agent = {"User-Agent": "Mozilla/5.0"}
@@ -98,6 +99,19 @@ def crawlOC(link):
         "OC Hospitalized （橙县住院人数）":int(each[6]),
     }
 
+def crawlHS(link):
+    agent = {"User-Agent": "Mozilla/5.0"}
+    page = requests.get(link, headers=agent)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    output = dict()
+    target_ids = ["0R43", "0R38", "0R25", "0R19", "0R28"]
+    for id in target_ids:
+        raw = [e.text for e in soup.find("th", {"id": id}).find_next_siblings("td")]
+        output[raw[0]] = {"Population": int(raw[2]), "Student": int(raw[4].replace("^", "")),
+                          "Staff": int(raw[6].replace("^", "")), "Rate": float(raw[-1])}
+
+    return output
+
 def updateYesterday():
     con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
                                   host=DATABASE_URL,
@@ -150,6 +164,38 @@ def updateLog():
             sql = f"UPDATE logs SET `{sub[1]}` = {sub[2]} WHERE Date = {monthdate}"
             cursor.execute(sql)
             con.commit()
+    con.close()
+
+def updateSchool():
+    con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
+                                  host=DATABASE_URL,
+                                  database='snn')
+    cursor = con.cursor()
+
+    cursor.execute("SELECT * FROM School")
+    current = cursor.fetchall()
+    print(current)
+    dt = date.today() - timedelta(days=1)
+    if dt.day < 10:
+        monthdate = float(dt.month + dt.day / 100)
+
+    else:
+        monthdate = float(str(dt.month) + "." + str(dt.day))
+    cursor.execute(f"SELECT Date FROM schoolLog WHERE Date = {monthdate}")
+    checker = cursor.fetchall()
+    if (len(checker) == 0):
+        print("here")
+        cursor.execute(("INSERT INTO schoolLog (Date) VALUES (%s)"), (monthdate,))
+        con.commit()
+        SQL = "UPDATE schoolLog SET "
+        ops = ["Population", "Student","Staff", "Rate"]
+        for school_set in current:
+            for op, data in zip(ops, school_set[1:]):
+                SQL += f"{school_set[0].replace(' ' , '')}{op} = {data}, "
+        SQL = SQL[:len(SQL)-2] + f"WHERE Date = {monthdate};"
+    print(SQL)
+    cursor.execute(SQL)
+    con.commit()
     con.close()
 
 def crawlOCCities():
@@ -226,7 +272,16 @@ def crawlData():
             cursor.execute(sql, val)
             con.commit()
             counter+=1
+
+    school_data = crawlHS(SCHOOL_SOURCE)
+    for school_name in school_data:
+        sql = "UPDATE School SET Population = %s, Student = %s, Staff = %s, Rate = %s WHERE name = %s"
+        inner = school_data[school_name]
+        val = (inner["Population"], inner["Student"], inner["Staff"], inner["Rate"], school_name)
+        cursor.execute(sql, val)
+        con.commit()
     con.close()
+    data.append(school_data)
     return jsonify(data)
 
 @app.route('/getData')
@@ -270,6 +325,7 @@ def setYesterday():
     updateYesterday()
     updateLog()
     updateYesterOC()
+    updateSchool()
     return "working"
 
 @app.route("/graphData")
@@ -307,4 +363,4 @@ def crawlOCCityData():
 
 
 if __name__ == '__main__':
-    crawlData()
+    updateSchool()
