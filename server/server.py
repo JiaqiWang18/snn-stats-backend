@@ -12,11 +12,11 @@ import mysql
 import os
 
 app = Flask(__name__)
-app.config['JSON_SORT_KEYS'] = False
-app.config['TEMPLATES_AUTO_RELOAD'] = True
 CORS(app)
 
 # config vars
+app.config['JSON_SORT_KEYS'] = False
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 DATABASE_URL = os.environ.get("SNN_RDS_URL")

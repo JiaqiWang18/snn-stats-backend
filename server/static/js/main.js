@@ -110,7 +110,13 @@ function makeChart(range, initial = false){
             }
             }
             for (date in data){
-                dataAxis.push(date)
+                console.log(date)
+                var day = date.split(".")[1]
+                if(day.length == 1){
+                    day+="0"
+                }
+                formatted = date.split(".")[0]+"/"+day
+                dataAxis.push(formatted)
                 list = data[date]
                 USData.push(list[0])
                 LAData.push(list[2])
