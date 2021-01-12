@@ -28,6 +28,8 @@ OC_SOURCE = os.environ.get("COVID_OC_SOURCE")
 OCCITIES_SOURCE = os.environ.get("OCCITIES_SOURCE")
 SCHOOL_SOURCE = os.environ.get("SCHOOL_SOURCE")
 
+def print(_):
+    pass
 
 def crawlUS(link):
     agent = {"User-Agent": "Mozilla/5.0"}
@@ -253,6 +255,35 @@ def crawlOCCities():
         driver.quit()
 
 
+def getschoolsdata():
+    con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
+                                  host=DATABASE_URL,
+                                  database='snn')
+    cursor = con.cursor()
+    cursor.execute("SELECT * FROM School")
+    current_school = cursor.fetchall()
+    dt = date.today() - timedelta(days=1)
+    if dt.day < 10:
+        monthdate = float(dt.month + dt.day / 100)
+
+    else:
+        monthdate = float(str(dt.month) + "." + str(dt.day))
+    cursor.execute(f"SELECT * FROM schoolLog WHERE Date = {monthdate}")
+    prev_school = cursor.fetchall()[0]
+    con.close()
+    print(current_school)
+    output = dict()
+    for school_data in current_school:
+        output[school_data[0]] = []
+        for sub in school_data:
+            output[school_data[0]].append(sub)
+        output[school_data[0]].pop(0)
+    for i in range(2, len(prev_school),4):
+        output[list(output.keys())[(i-2)//4]][1] = [output[list(output.keys())[(i-2)//4]][1], output[list(output.keys())[(i-2)//4]][1] - prev_school[i]]
+    for i in range(3, len(prev_school),4):
+        output[list(output.keys())[(i-2)//4]][2] = [output[list(output.keys())[(i-2)//4]][2], output[list(output.keys())[(i-2)//4]][2] - prev_school[i]]
+    return output
+
 @app.route('/')
 def index():
     return render_template("covidstats.html")
@@ -313,7 +344,6 @@ def getData():
     output = dict()
     for i in range(len(current)):
         output[current[i][1]] = [current[i][2], current[i][2] - yesterday[i][2]]
-    # output["OC Today Percentage of Positive Cases （橙县今日检测阳性概率）"] = [round(output['OC Total （橙县总共）'][1]/output['OC Total Tested （橙县已检测）'][1],3) ,0]
 
     cursor.execute("SELECT * FROM occities ORDER BY stats DESC")
     occurrent = cursor.fetchall()
@@ -329,6 +359,7 @@ def getData():
         output[occurrent[i][0]] = [occurrent[i][1], occurrent[i][1] - dicocyesterday[occurrent[i][0]]]
     con.close()
     print(output)
+    output.update(getschoolsdata())
     return jsonify(output)
 
 
@@ -376,4 +407,4 @@ def crawlOCCityData():
 
 
 if __name__ == '__main__':
-    updateSchool()
+    getSchools()

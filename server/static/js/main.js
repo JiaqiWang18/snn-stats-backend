@@ -26,7 +26,7 @@ function main(){
         $("#OCTT").text(raw[7][0])
         $("#OCD").text(raw[8][0])
         $("#OCR").text(raw[9][0])
-        console.log( rawNum)
+        console.log(rawNum)
         const rate = rawNum[7][1]/rawNum[9][1]
         let percentage= Math.round((rate + Number.EPSILON) * 100) / 100* 100
         if(percentage.toString().length>3){
@@ -55,7 +55,7 @@ function main(){
         console.log(raw)
         console.log(labels)
         
-        for (var i = 0; i < raw.length; i++){
+        for (var i = 0; i < raw.length-5; i++){
             var tr = document.createElement("tr")
             var thTitle = document.createElement("th")
             var thNum = document.createElement("th")
@@ -177,8 +177,6 @@ function makeChart(range, initial = false){
     };
     server.open("GET", "/graphData?range="+range, true);
     server.send();
-
-    
 }
 
 
