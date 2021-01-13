@@ -262,13 +262,7 @@ def getschoolsdata():
     cursor = con.cursor()
     cursor.execute("SELECT * FROM School")
     current_school = cursor.fetchall()
-    dt = date.today() - timedelta(days=1)
-    if dt.day < 10:
-        monthdate = float(dt.month + dt.day / 100)
-
-    else:
-        monthdate = float(str(dt.month) + "." + str(dt.day))
-    cursor.execute(f"SELECT * FROM schoolLog WHERE Date = {monthdate}")
+    cursor.execute(f"SELECT * FROM schoolLog ORDER BY ID DESC LIMIT 1")
     prev_school = cursor.fetchall()[0]
     con.close()
     print(current_school)
