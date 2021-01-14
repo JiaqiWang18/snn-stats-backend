@@ -3,7 +3,13 @@
 
 @media only screen and (max-width: 600px) 
 {
-	th{
+	th.USTH,
+	th.CAth,
+	th.titleTh,
+	th.abtTH,
+	th.LAth,
+	th.OCth
+	{
 		display: inline;
 	}
 	.title{
@@ -14,9 +20,6 @@
 	}
 	.chartstyle{
 		width:90% !important;
-	}
-	.occityth{
-		text-align: right;
 	}
 }
 
@@ -189,7 +192,7 @@ table{
 .CAstats{
 	width: 100%;
 	background-color: #DA2E2E;
-	margin: auto;
+	margin: 0 auto;
 	padding-top: 8px;
 }
 
@@ -234,9 +237,21 @@ table{
 }
 
 /*OCcities*/
+
+.occitydiv{
+	max-height: 400px;
+	overflow-y: auto;
+	border: #0068B6;
+	border-style: solid;
+	border-width: 5px;
+	width: 80%;
+	margin: 0 auto;
+}
+
 .OCcity{
 	width: 100% !important;
 	border: none !important;
+	
 }
 
 .occityth{
@@ -313,4 +328,60 @@ table{
 
 .schools {
     background-color:#1a53ff;
+    width:100%;
 }
+
+.schtable{
+    margin: 0 auto;
+	width: 60%;
+	border:  #DA2E2E;
+	border-style: solid;
+	border-width: 5px;
+	border-collapse: separate !important;
+}
+
+.schth{
+	color:white;
+	padding: 5px;
+	width: 33%;
+	
+}
+
+.tooltip {
+	text-align: center;
+	position: relative;
+	display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	left: 50%;
+	margin-left: -60px;
+	opacity: 0;
+	transition: opacity 0.3s;
+  }
+  
+  .tooltip .tooltiptext::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #555 transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+  }

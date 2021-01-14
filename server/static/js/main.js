@@ -1,6 +1,5 @@
 function main(){
     $.get("/getData", function(data, status){
-        console.log(data)
         let raw = []
         let labels = []
         let rawNum = []
@@ -80,6 +79,24 @@ function main(){
             thNum.setAttribute("class","occityth")
             document.getElementById("OCCity").appendChild(tr)
         }
+
+         for (var i = raw.length-5; i < raw.length; i++){
+              console.log(Object.keys(raw))
+              var elements = 
+              `<tr>
+                <th class = "schth">
+                    ${Object.keys(data)[i+11]}
+                </th>       
+                <th class = "schth">
+                  ${raw[i][1].split(",")[0]}
+                </th>             
+                <th class = "schth">
+                  ${raw[i][2].split(",")[0]}
+                </th>        
+              </tr>
+              `
+              $("#schtable").append(elements);
+         }
     });
 }
 
@@ -253,7 +270,7 @@ function renderChart(label, data, xaxis, eleId, color) {
 }
 
 $( document ).ready(function() {
-  console.log = function() {}
+  //console.log = function() {}
 
   var modal = document.getElementById("myModal");
   var btn = document.getElementById("myBtn");
