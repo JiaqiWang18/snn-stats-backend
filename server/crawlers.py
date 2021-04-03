@@ -18,12 +18,8 @@ import pytz
 
 # config vars
 
-if(os.environ.get("DEBUG")):
-    GOOGLE_CHROME_PATH = ""
-    CHROMEDRIVER_PATH = "D:\chromedriver.exe"
-else:
-    GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
-    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
+CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 DATABASE_URL = os.environ.get("SNN_RDS_URL")
 DATABASE_PASS = os.environ.get("SNN_RDS_PASS")
 US_SOURCE = os.environ.get("COVID_US_SOURCE")
@@ -237,5 +233,9 @@ def updateQuery(obj, dic):
     for key, value in dic.items():
         setattr(obj, key, value)
 
+def crawl_and_update_all():
+    update_oc_cities()
+    store_to_db()
+
 if __name__ == '__main__':
-    print(update_oc_cities())
+    crawl_and_update_all()

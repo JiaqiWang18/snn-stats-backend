@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72acaddd-8948-4a70-87e9-4db750b30100" name="Default Changelist" comment="styling">
-      <change afterPath="$PROJECT_DIR$/server/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/snnstatsgetter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/snnstatsgetter.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geckodriver.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/ghostdriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/crawlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/updateOCcity.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/crawlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/crawlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +114,7 @@
       <recent name="D:\snnstatsgetter\server\server" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.crawlers (1)">
+  <component name="RunManager" selected="Python.wsgi">
     <configuration name="crawlers (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="snnstatsgetter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -162,17 +159,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="server" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="routes" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="snnstatsgetter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/server" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\snnstatsgetter\server\crawlers.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server/routes.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -226,19 +226,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.server" />
       <item itemvalue="Python.wsgi" />
       <item itemvalue="Python.crawlers" />
       <item itemvalue="Python.transfer" />
       <item itemvalue="Python.crawlers (1)" />
+      <item itemvalue="Python.routes" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.wsgi" />
+        <item itemvalue="Python.routes" />
         <item itemvalue="Python.crawlers (1)" />
         <item itemvalue="Python.transfer" />
-        <item itemvalue="Python.wsgi" />
         <item itemvalue="Python.crawlers" />
-        <item itemvalue="Python.server" />
       </list>
     </recent_temporary>
   </component>
@@ -254,7 +254,8 @@
       <option name="presentableId" value="Default" />
       <updated>1606193237258</updated>
       <workItem from="1615859062537" duration="1188000" />
-      <workItem from="1617304648819" duration="24910000" />
+      <workItem from="1617304648819" duration="29019000" />
+      <workItem from="1617408987159" duration="9545000" />
     </task>
     <servers />
   </component>
@@ -323,6 +324,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LAST_COMMIT_MESSAGE" value="" />
@@ -331,8 +333,9 @@
     <SUITE FILE_PATH="coverage/snnstatsgetter$transfer.coverage" NAME="transfer Coverage Results" MODIFIED="1617334923661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
     <SUITE FILE_PATH="coverage/snnstatsgetter$server.coverage" NAME="server Coverage Results" MODIFIED="1617306950211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
     <SUITE FILE_PATH="coverage/snnstatsgetter$crawlers.coverage" NAME="crawlers Coverage Results" MODIFIED="1617317652325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
-    <SUITE FILE_PATH="coverage/snnstatsgetter$wsgi.coverage" NAME="wsgi Coverage Results" MODIFIED="1617324523893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/snnstatsgetter$crawlers__1_.coverage" NAME="crawlers (1) Coverage Results" MODIFIED="1617340985821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
+    <SUITE FILE_PATH="coverage/snnstatsgetter$wsgi.coverage" NAME="wsgi Coverage Results" MODIFIED="1617418413130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/snnstatsgetter$crawlers__1_.coverage" NAME="crawlers (1) Coverage Results" MODIFIED="1617412919401" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
+    <SUITE FILE_PATH="coverage/snnstatsgetter$routes.coverage" NAME="routes Coverage Results" MODIFIED="1617418198854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../Anaconda3/Lib/smtplib.py">
