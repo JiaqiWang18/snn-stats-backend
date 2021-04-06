@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from datetime import datetime
+from datetime import datetime, timedelta
 from webdriver_manager.chrome import ChromeDriverManager
 
 from bs4 import BeautifulSoup
@@ -197,7 +197,7 @@ def store_to_db():
     pacific_time = pytz.timezone('US/Pacific')
     current_date = datetime.now(pacific_time).date()
     query = lambda table_name: db.session.query(table_name).get(current_date)
-
+    print(current_date)
     for key in data.keys():
         if (key == "united_states"):
             if(not query(UnitedStates)):
@@ -205,20 +205,23 @@ def store_to_db():
                     UnitedStates(date=current_date, total_cases=data[key]["total_cases"], death=data[key]["death"],
                                  recovered=data[key]["recovered"]))
             else:
-                updateQuery(UnitedStates, data[key])
+                db.session.query(UnitedStates).filter(UnitedStates.date==current_date).update({UnitedStates.total_cases:data[key]["total_cases"], UnitedStates.death:data[key]["death"],
+                                 UnitedStates.recovered:data[key]["recovered"]}, synchronize_session=False)
 
         elif (key == "california"):
             if (not query(California)):
                 db.session.add(
                     California(date=current_date, total_cases=data[key]["total_cases"], death=data[key]["death"]))
             else:
-                updateQuery(California, data[key])
+                db.session.query(California).filter(California.date == current_date).update(
+                    {California.total_cases: data[key]["total_cases"], California.death: data[key]["death"]}, synchronize_session=False)
 
         elif (key == "la_county"):
             if (not query(LACounty)):
                 db.session.add(LACounty(date=current_date, total_cases=data[key]["total_cases"], death=data[key]["death"]))
             else:
-                updateQuery(LACounty, data[key])
+                db.session.query(LACounty).filter(LACounty.date == current_date).update(
+                    {LACounty.total_cases: data[key]["total_cases"], LACounty.death: data[key]["death"]}, synchronize_session=False)
 
         elif (key == "orange_county"):
             if (not query(OrangeCounty)):
@@ -226,12 +229,12 @@ def store_to_db():
                     OrangeCounty(date=current_date, total_cases=data[key]["total_cases"], death=data[key]["death"],
                                  total_tested=data[key]["total_tested"]))
             else:
-                updateQuery(OrangeCounty, data[key])
+                db.session.query(OrangeCounty).filter(OrangeCounty.date == current_date).update(
+                    {OrangeCounty.total_cases: data[key]["total_cases"], OrangeCounty.death: data[key]["death"],
+                     OrangeCounty.total_tested: data[key]["total_tested"]}, synchronize_session=False)
+
     db.session.commit()
 
-def updateQuery(obj, dic):
-    for key, value in dic.items():
-        setattr(obj, key, value)
 
 def crawl_and_update_all():
     update_oc_cities()

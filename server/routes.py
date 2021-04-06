@@ -1,6 +1,7 @@
 from flask import jsonify, render_template, request
 from server import app
 from sqlalchemy import and_
+
 from server import db, models, schema
 import pytz
 from datetime import datetime, timedelta, date
@@ -45,7 +46,10 @@ def get_display_data():
     for key in current_stats:
         output[key] = {}
         for inner_key in current_stats[key]:
-            if inner_key != 'date':
+            print(inner_key)
+
+            if inner_key != 'date' and current_stats[key][inner_key] is not None and inner_key in yesterday_stats[
+                key] and yesterday_stats[key][inner_key] is not None:
                 try:
                     output[key][inner_key] = [
                         current_stats[key][inner_key],
@@ -54,23 +58,35 @@ def get_display_data():
                 except KeyError:
                     pass
 
-    return {current_date.strftime("%m/%d/%Y"): output}
+    return {current_date.strftime("%Y-%m-%d"): output}
+
 
 @app.route("/graph-data")
 def get_graph_data():
-    model_name = request.args.get('model')
+    mapStrToModelCol = lambda model: {
+        "total_cases": model.total_cases,
+        "death": model.death,
+        "recovered": model.recovered,
+        "total_tested": model.total_tested
+    }
+    data_type = request.args.get('type')
     start_date = request.args.get('start')
     end_date = request.args.get('end')
-    if not model_name or not start_date:
-        return "Please provide a model and start"
     if not end_date:
         end_date = get_current_date()
-    mapper = {'us': [models.UnitedStates, schema.UnitedStatesSchema()],
-              'oc': [models.OrangeCounty, schema.OrangeCountySchema()],
-              'la': [models.LACounty, schema.LACountySchema()],
-              'ca': [models.California, schema.CaliforniaSchema()]}
-    model = mapper[model_name][0]
-    qry = db.session.query(model).filter(
-        and_(model.date >= start_date, model.date <= end_date)).all()
+    mapper = {'us': [models.UnitedStates, schema.UnitedStatesSchema(many=True)],
+              'oc': [models.OrangeCounty, schema.OrangeCountySchema(many=True)],
+              'la': [models.LACounty, schema.LACountySchema(many=True)],
+              'ca': [models.California, schema.CaliforniaSchema(many=True)]}
+    output = {}
+    for location in mapper:
+        model = mapper[location][0]
+        current_schema = mapper[location][1]
+        output[location] = current_schema.dump(db.session.query(model.date, mapStrToModelCol(model)[data_type]).filter(
+            and_(model.date >= start_date, model.date <= end_date, )).all())
 
-    return jsonify([mapper[model_name][1].dump(data) for data in qry])
+    return jsonify(output)
+
+
+if __name__ == '__main__':
+    print(get_by_date("2021-04-01"))

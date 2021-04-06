@@ -20,6 +20,7 @@ class OrangeCountySchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = models.OrangeCounty
 
+
 class OCCitiesSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = models.OCCities
