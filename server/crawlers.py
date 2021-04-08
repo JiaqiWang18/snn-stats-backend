@@ -77,8 +77,6 @@ def crawl_la(link):
         data = {}
 
         for i in range(6, 20):
-            print(str(i) + ":" + str(raw[i]))
-
             if ("Laboratory Confirmed Cases" in raw[i]):
                 data["total_cases"] = int(raw[i + 1])
             elif ("Deaths" in raw[i]):
@@ -142,6 +140,8 @@ def update_oc_cities():
                 except Exception:
                     continue
         processed = processed[:41]
+        print("OC Cities Crawling Finished")
+        print(processed)
         con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
                                       host=DATABASE_URL,
                                       database='covid_data')
@@ -194,7 +194,9 @@ def store_to_db():
     pacific_time = pytz.timezone('US/Pacific')
     current_date = datetime.now(pacific_time).date()
     query = lambda table_name: db.session.query(table_name).get(current_date)
+    print("US, CA, LA, OC Crawling Finished")
     print(current_date)
+    print(data)
     for key in data.keys():
         if (key == "united_states"):
             if(not query(UnitedStates)):
@@ -236,6 +238,7 @@ def store_to_db():
 def main():
     update_oc_cities()
     store_to_db()
+    print("Data Saved")
 
 if __name__ == '__main__':
     main()
