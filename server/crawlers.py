@@ -119,8 +119,8 @@ def update_oc_cities():
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--no-sandbox")
 
-    #driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
+    #driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get(OCCITIES_SOURCE)
     try:
         element = WebDriverWait(driver, 10).until(
