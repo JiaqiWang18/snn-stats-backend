@@ -1,14 +1,11 @@
 from server.models import UnitedStates, LACounty, California, OrangeCounty
-
 from sqlalchemy.exc import IntegrityError
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime, timedelta
 from webdriver_manager.chrome import ChromeDriverManager
-
 from bs4 import BeautifulSoup
 import requests
 import mysql.connector
@@ -114,7 +111,7 @@ def crawl_oc(link):
             "Orange County Crawler Error": err,
         }
 
-
+#function crawl and update db rows
 def update_oc_cities():
     options = webdriver.ChromeOptions()
     options.binary_location = GOOGLE_CHROME_PATH
@@ -234,11 +231,11 @@ def store_to_db():
                      OrangeCounty.total_tested: data[key]["total_tested"]}, synchronize_session=False)
 
     db.session.commit()
+    return data
 
-
-def crawl_and_update_all():
+def main():
     update_oc_cities()
     store_to_db()
 
 if __name__ == '__main__':
-    crawl_and_update_all()
+    main()

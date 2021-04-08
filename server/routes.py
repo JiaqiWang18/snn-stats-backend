@@ -25,7 +25,7 @@ def get_by_date(current_date):
 
 @app.route("/")
 def index():
-    return "Hello"
+    return "SNN COVID-19 Data API"
 
 
 @app.route('/get')
