@@ -9,12 +9,14 @@ class OrangeCounty(db.Model, SerializerMixin):
     total_tested = db.Column(db.Integer)
     recovered = db.Column(db.Integer)
 
+
 class LACounty(db.Model, SerializerMixin):
     date = db.Column(db.Date, primary_key=True)
     total_cases = db.Column(db.Integer)
     death = db.Column(db.Integer)
     total_tested = db.Column(db.Integer)
     recovered = db.Column(db.Integer)
+
 
 class California(db.Model, SerializerMixin):
     date = db.Column(db.Date, primary_key=True)
@@ -23,12 +25,14 @@ class California(db.Model, SerializerMixin):
     total_tested = db.Column(db.Integer)
     recovered = db.Column(db.Integer)
 
+
 class UnitedStates(db.Model):
     date = db.Column(db.Date, primary_key=True)
     total_cases = db.Column(db.Integer)
     death = db.Column(db.Integer)
     recovered = db.Column(db.Integer)
     total_tested = db.Column(db.Integer)
+
 
 class OCCities(db.Model):
     date = db.Column(db.Date, primary_key=True)

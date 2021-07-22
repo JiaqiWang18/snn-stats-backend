@@ -10,6 +10,7 @@ app = Flask(__name__)
 cors = CORS(app)
 
 DATABASE_URL = os.environ.get("SNN_RDS_URL")
+print(DATABASE_URL)
 DATABASE_PASS = os.environ.get("SNN_RDS_PASS")
 DATABASE_USER = 'admin'
 app.config['JSON_SORT_KEYS'] = False
