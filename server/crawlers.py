@@ -23,10 +23,10 @@ US_SOURCE = os.environ.get("COVID_US_SOURCE")
 CA_SOURCE = os.environ.get("COVID_CA_SOURCE")
 LA_SOURCE = os.environ.get("COVID_LA_SOURCE")
 OC_SOURCE = os.environ.get("COVID_OC_SOURCE")
-OCCITIES_SOURCE = os.environ.get("COVID_OCCITIES_SOURCE")
+OCCITIES_SOURCE = os.environ.get("COVID_OCCITIES_SOURCE") or "https://ochca.maps.arcgis.com/apps/opsdashboard/index.html#/2a169f85c2254dd7b43f95b095208356"
 USER_AGENT = {"User-Agent": "Mozilla/5.0"}
 
-
+print("OC Cities", OCCITIES_SOURCE)
 def crawl_us(link):
     try:
         page = requests.get(link, headers=USER_AGENT)
@@ -182,7 +182,7 @@ def store_to_db():
 
     con = mysql.connector.connect(user='admin', password=DATABASE_PASS,
                                   host=DATABASE_URL,
-                                  database='snn')
+                                  database='covid_data')
     cursor = con.cursor()
     # get parsed data from crawling functions
     data = {}
@@ -241,4 +241,5 @@ def main():
     print("Data Saved")
 
 if __name__ == '__main__':
+
     main()

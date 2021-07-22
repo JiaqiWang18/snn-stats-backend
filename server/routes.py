@@ -40,14 +40,15 @@ def get_display_data():
     yesterday_date = current_date - timedelta(1)
 
     current_stats = get_by_date(current_date)
+    #print(current_stats)
     yesterday_stats = get_by_date(yesterday_date)
+    #print(yesterday_stats)
 
     output = {}
     for key in current_stats:
         output[key] = {}
         for inner_key in current_stats[key]:
-            print(inner_key)
-
+            #print(inner_key)
             if inner_key != 'date' and current_stats[key][inner_key] is not None and inner_key in yesterday_stats[
                 key] and yesterday_stats[key][inner_key] is not None:
                 try:
@@ -89,4 +90,4 @@ def get_graph_data():
 
 
 if __name__ == '__main__':
-    print(get_by_date("2021-04-01"))
+    print(get_by_date())

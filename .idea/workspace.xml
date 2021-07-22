@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72acaddd-8948-4a70-87e9-4db750b30100" name="Default Changelist" comment="styling">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/snnstatsgetter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/snnstatsgetter.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/crawlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/crawlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +110,7 @@
       <recent name="D:\snnstatsgetter\server\server" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.wsgi">
+  <component name="RunManager" selected="Python.routes">
     <configuration name="crawlers (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="snnstatsgetter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -150,7 +146,37 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\snnstatsgetter\server\crawlers.py" />
+      <option name="SCRIPT_NAME" value="D:/snnstatsgetter/server/crawlers.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="new cralwer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="snnstatsgetter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="COVID_CA_SOURCE" value="https://www.latimes.com/projects/california-coronavirus-cases-tracking-outbreak/" />
+        <env name="COVID_LA_SOURCE" value="http://www.publichealth.lacounty.gov/media/Coronavirus/locations.htm" />
+        <env name="COVID_OCCITIES_SOURCE" value="https://ochca.maps.arcgis.com/apps/opsdashboard/index.html#/2a169f85c2254dd7b43f95b095208356" />
+        <env name="COVID_OC_SOURCE" value="https://occovid19.ochealthinfo.com/coronavirus-in-oc" />
+        <env name="COVID_US_SOURCE" value="https://www.worldometers.info/coronavirus/country/us/" />
+        <env name="OCCITIES_SOURCE" value="https://ochca.maps.arcgis.com/apps/opsdashboard/index.html#/2a169f85c2254dd7b43f95b095208356" />
+        <env name="SNN_RDS_PASS" value="lxh730101" />
+        <env name="SNN_RDS_URL" value="snn-stats.cld13dn3roer.us-west-1.rds.amazonaws.com" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/server" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server/crawlers.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -229,16 +255,16 @@
       <item itemvalue="Python.wsgi" />
       <item itemvalue="Python.crawlers" />
       <item itemvalue="Python.transfer" />
-      <item itemvalue="Python.crawlers (1)" />
+      <item itemvalue="Python.new cralwer" />
       <item itemvalue="Python.routes" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.wsgi" />
-        <item itemvalue="Python.crawlers (1)" />
         <item itemvalue="Python.routes" />
-        <item itemvalue="Python.transfer" />
+        <item itemvalue="Python.new cralwer" />
         <item itemvalue="Python.crawlers" />
+        <item itemvalue="Python.wsgi" />
+        <item itemvalue="Python.transfer" />
       </list>
     </recent_temporary>
   </component>
@@ -260,6 +286,7 @@
       <workItem from="1626832468902" duration="6585000" />
       <workItem from="1626891934024" duration="746000" />
       <workItem from="1626978980222" duration="3548000" />
+      <workItem from="1626982638271" duration="2643000" />
     </task>
     <servers />
   </component>
@@ -337,6 +364,7 @@
     <SUITE FILE_PATH="coverage/snnstatsgetter$wsgi.coverage" NAME="wsgi Coverage Results" MODIFIED="1617689878336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/snn_stats_backend$wsgi.coverage" NAME="wsgi Coverage Results" MODIFIED="1626980520586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/snnstatsgetter$server.coverage" NAME="server Coverage Results" MODIFIED="1617306950211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
+    <SUITE FILE_PATH="coverage/snn_stats_backend$crawlers__1_.coverage" NAME="new cralwer Coverage Results" MODIFIED="1626984379447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
     <SUITE FILE_PATH="coverage/snnstatsgetter$crawlers__1_.coverage" NAME="crawlers (1) Coverage Results" MODIFIED="1617901221432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
     <SUITE FILE_PATH="coverage/snnstatsgetter$routes.coverage" NAME="routes Coverage Results" MODIFIED="1617570296120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
     <SUITE FILE_PATH="coverage/snnstatsgetter$transfer.coverage" NAME="transfer Coverage Results" MODIFIED="1617334923661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
