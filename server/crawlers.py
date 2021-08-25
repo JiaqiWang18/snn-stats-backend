@@ -1,6 +1,7 @@
 from server.models import UnitedStates, LACounty, California, OrangeCounty
 from sqlalchemy.exc import IntegrityError
 from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -117,13 +118,16 @@ def update_oc_cities():
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--no-sandbox")
 
-    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
-    #driver = webdriver.Chrome(ChromeDriverManager().install())
+    #driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get(OCCITIES_SOURCE)
     try:
-        element = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID, "ember273"))
-        )
+        try:
+            element = WebDriverWait(driver, 20).until(
+                EC.presence_of_element_located((By.ID, "ember273"))
+            )
+        except(TimeoutException):
+            pass
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         div = soup.find_all("div", {"class": "external-html"})
         raw = []

@@ -40,24 +40,26 @@ def get_display_data():
     yesterday_date = current_date - timedelta(1)
 
     current_stats = get_by_date(current_date)
-    #print(current_stats)
+    print(current_stats)
     yesterday_stats = get_by_date(yesterday_date)
-    #print(yesterday_stats)
+    print(yesterday_stats)
 
     output = {}
     for key in current_stats:
         output[key] = {}
         for inner_key in current_stats[key]:
-            #print(inner_key)
-            if inner_key != 'date' and current_stats[key][inner_key] is not None and inner_key in yesterday_stats[
-                key] and yesterday_stats[key][inner_key] is not None:
+            # print(inner_key)
+            if inner_key != 'date' and current_stats[key][inner_key] is not None:
                 try:
                     output[key][inner_key] = [
                         current_stats[key][inner_key],
                         current_stats[key][inner_key] - yesterday_stats[key][inner_key]
                     ]
                 except KeyError:
-                    pass
+                    output[key][inner_key] = [
+                        current_stats[key][inner_key],
+                        0
+                    ]
 
     return {current_date.strftime("%Y-%m-%d"): output}
 
