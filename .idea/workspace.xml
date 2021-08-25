@@ -253,11 +253,11 @@
     </configuration>
     <list>
       <item itemvalue="Python.crawlers (1)" />
-      <item itemvalue="Python.wsgi" />
       <item itemvalue="Python.crawlers" />
-      <item itemvalue="Python.transfer" />
       <item itemvalue="Python.new cralwer" />
       <item itemvalue="Python.routes" />
+      <item itemvalue="Python.transfer" />
+      <item itemvalue="Python.wsgi" />
     </list>
     <recent_temporary>
       <list>
