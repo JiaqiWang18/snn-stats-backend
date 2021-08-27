@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="72acaddd-8948-4a70-87e9-4db750b30100" name="Default Changelist" comment="styling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/crawlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/crawlers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes.py" afterDir="false" />
     </list>
@@ -48,6 +49,7 @@
     <option name="height" value="560" />
   </component>
   <component name="ProjectId" id="1pooywPNKVziiHqw4zVdaltYhrc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -110,7 +112,7 @@
       <recent name="D:\snnstatsgetter\server\server" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.routes">
+  <component name="RunManager" selected="Python.wsgi">
     <configuration name="crawlers (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="snnstatsgetter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -261,9 +263,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.routes" />
         <item itemvalue="Python.wsgi" />
         <item itemvalue="Python.crawlers (1)" />
+        <item itemvalue="Python.routes" />
         <item itemvalue="Python.new cralwer" />
         <item itemvalue="Python.crawlers" />
       </list>
@@ -289,6 +291,8 @@
       <workItem from="1626978980222" duration="3548000" />
       <workItem from="1626982638271" duration="6369000" />
       <workItem from="1629912984753" duration="1720000" />
+      <workItem from="1630033033558" duration="10041000" />
+      <workItem from="1630099326585" duration="384000" />
     </task>
     <servers />
   </component>
@@ -364,9 +368,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/snnstatsgetter$wsgi.coverage" NAME="wsgi Coverage Results" MODIFIED="1617689878336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/snn_stats_backend$wsgi.coverage" NAME="wsgi Coverage Results" MODIFIED="1629913911400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/snn_stats_backend$wsgi.coverage" NAME="wsgi Coverage Results" MODIFIED="1630099441300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/snnstatsgetter$server.coverage" NAME="server Coverage Results" MODIFIED="1617306950211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
-    <SUITE FILE_PATH="coverage/snn_stats_backend$crawlers__1_.coverage" NAME="crawlers (1) Coverage Results" MODIFIED="1629913712088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
+    <SUITE FILE_PATH="coverage/snn_stats_backend$crawlers__1_.coverage" NAME="crawlers (1) Coverage Results" MODIFIED="1630092966618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
     <SUITE FILE_PATH="coverage/snnstatsgetter$crawlers__1_.coverage" NAME="crawlers (1) Coverage Results" MODIFIED="1617901221432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
     <SUITE FILE_PATH="coverage/snn_stats_backend$routes.coverage" NAME="routes Coverage Results" MODIFIED="1629913970384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
     <SUITE FILE_PATH="coverage/snnstatsgetter$routes.coverage" NAME="routes Coverage Results" MODIFIED="1617570296120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />

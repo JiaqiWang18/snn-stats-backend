@@ -27,7 +27,6 @@ OC_SOURCE = os.environ.get("COVID_OC_SOURCE")
 OCCITIES_SOURCE = os.environ.get("COVID_OCCITIES_SOURCE") or "https://ochca.maps.arcgis.com/apps/opsdashboard/index.html#/2a169f85c2254dd7b43f95b095208356"
 USER_AGENT = {"User-Agent": "Mozilla/5.0"}
 
-print("OC Cities", OCCITIES_SOURCE)
 def crawl_us(link):
     try:
         page = requests.get(link, headers=USER_AGENT)
@@ -118,8 +117,8 @@ def update_oc_cities():
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--no-sandbox")
 
-    #driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
+    #driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get(OCCITIES_SOURCE)
     try:
         try:

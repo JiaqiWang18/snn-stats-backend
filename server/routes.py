@@ -1,9 +1,7 @@
-from flask import jsonify, render_template, request
-from server import app
+from flask import jsonify, request
+from server import app, cache, db, models, schema
 from sqlalchemy import and_
-
-from server import db, models, schema
-import pytz
+import pytz, time
 from datetime import datetime, timedelta, date
 
 
@@ -12,6 +10,7 @@ def get_current_date():
     return datetime.now(pacific_time).date()
 
 
+@cache.memoize(timeout=1200)
 def get_by_date(current_date):
     data = lambda model, sch: sch.dump(db.session.query(model).get(current_date))
     return {
@@ -21,6 +20,23 @@ def get_by_date(current_date):
         "Orange County": data(models.OrangeCounty, schema.OrangeCountySchema()),
         "Orange County Cities": data(models.OCCities, schema.OCCitiesSchema())
     }
+
+
+@cache.memoize(timeout=1200)
+def graph_data_helper(mapper, data_type, start_date, end_date):
+    mapStrToModelCol = lambda model: {
+        "total_cases": model.total_cases,
+        "death": model.death,
+        "recovered": model.recovered,
+        "total_tested": model.total_tested
+    }
+    output = {}
+    for location in mapper:
+        model = mapper[location][0]
+        current_schema = mapper[location][1]
+        output[location] = current_schema.dump(db.session.query(model.date, mapStrToModelCol(model)[data_type]).filter(
+            and_(model.date >= start_date, model.date <= end_date, )).all())
+    return output
 
 
 @app.route("/")
@@ -55,7 +71,7 @@ def get_display_data():
                         current_stats[key][inner_key],
                         current_stats[key][inner_key] - yesterday_stats[key][inner_key]
                     ]
-                except KeyError:
+                except Exception:
                     output[key][inner_key] = [
                         current_stats[key][inner_key],
                         0
@@ -66,12 +82,6 @@ def get_display_data():
 
 @app.route("/graph-data")
 def get_graph_data():
-    mapStrToModelCol = lambda model: {
-        "total_cases": model.total_cases,
-        "death": model.death,
-        "recovered": model.recovered,
-        "total_tested": model.total_tested
-    }
     data_type = request.args.get('type')
     start_date = request.args.get('start')
     end_date = request.args.get('end')
@@ -81,14 +91,7 @@ def get_graph_data():
               'oc': [models.OrangeCounty, schema.OrangeCountySchema(many=True)],
               'la': [models.LACounty, schema.LACountySchema(many=True)],
               'ca': [models.California, schema.CaliforniaSchema(many=True)]}
-    output = {}
-    for location in mapper:
-        model = mapper[location][0]
-        current_schema = mapper[location][1]
-        output[location] = current_schema.dump(db.session.query(model.date, mapStrToModelCol(model)[data_type]).filter(
-            and_(model.date >= start_date, model.date <= end_date, )).all())
-
-    return jsonify(output)
+    return jsonify(graph_data_helper(mapper, data_type, start_date, end_date))
 
 
 if __name__ == '__main__':
